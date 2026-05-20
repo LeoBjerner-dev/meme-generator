@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# Meme Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Individuell inlämningsuppgift — Javascript Ramverk**
 
-Currently, two official plugins are available:
+En meme-generator byggd med React där du kan välja en bild och lägga till egen text över den.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Om uppgiften
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Bygg en meme-generator där användaren kan välja en meme-bild och lägga på egen text i realtid. Tänk igenom komponentstrukturen — t.ex. en komponent för bildval, en för förhandsgranskning och en för textkontroller.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Funktionalitet
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Välj meme** — en knapp öppnar en komponent med valbara bilder. När en bild valts stängs komponenten och bilden visas.
+- **Textfält** — visas endast när en bild är vald. Två inputfält (top/bottom) som uppdaterar texten över bilden i realtid.
+- **Rensa text** — fälten kan rensas manuellt, och rensas automatiskt vid bildbyte.
+- **Textstorlek** — varje inputfält har en slider för att justera textstorleken individuellt.
+- **Ladda ner** — när memen är klar kan användaren ladda ner bilden. Nedladdning är inte möjlig om ingen bild är vald.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Spara och ladda ner
+
+Installera `html2canvas`:
+
+```bash
+npm install html2canvas
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Implementera följande funktion (`.meme` är klassen på elementet som ska omvandlas):
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```ts
+function saveMeme() {
+  const element = document.querySelector(".meme") as HTMLDivElement;
+  html2canvas(element).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "meme.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
 ```
+
+---
+
+## Bilder
+
+Bilder läggs i `public`-mappen och refereras enligt:
+
+---
+
+## Komponenter
+
+Minst 3 komponenter utöver `App.tsx` ska skapas. All state ska ligga i `App.tsx` — övriga komponenter ska vara "dumma" (lifting state up).
+
+---
+
+## Styling
+
+Valfri teknik och utformning. Någon form av styling krävs så att användaren förstår flödet. Sidan behöver inte vara responsiv.
+
+---
+
+## Kravspecifikation
+
+### G
+
+- [ ] Man kan välja en bild
+- [ ] Man kan när som helst byta bild (textfält rensas)
+- [ ] När bild är vald visas två inputfält för top- och bottomtext
+- [ ] När bild är vald kan man ladda ner memen
+- [ ] Textstorlek kan justeras individuellt med slider
+- [ ] Minst 3 komponenter utöver `App.tsx`
+- [ ] All state i `App.tsx` — resten är dumma komponenter
+- [ ] Git och GitHub har använts
+
+### VG
+
+- [ ] Alla G-krav är uppfyllda
+- [ ] Ingen text visas direkt — istället finns en knapp "Lägg till text" för att lägga till valfritt antal textfält
+- [ ] Texterna ska kunna dras och flyttas med paketet `react-rnd` (endast position hanteras)
+- [ ] `Rnd`-komponenten får ha eget lokalt state
+
+---
+
+## Inlämning
+
+Inlämning sker via Google Classroom med länk till GitHub-repo.
