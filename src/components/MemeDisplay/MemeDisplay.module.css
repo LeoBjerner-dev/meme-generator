@@ -1,0 +1,32 @@
+.MemeContainer {
+  height: 500px;
+  width: 800px;
+  border: 2px solid black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+}
+
+.ImageContainer img {
+    height: 350px;
+    min-width: 600px;
+    border: 1px solid black;
+}
+
+.MemeContainer button {
+    padding: 20px;
+    width: 150px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    color: lightcyan;
+    background-color: red;
+}
+.MemeContainer button:hover {
+    scale: 1.05;
+    cursor: pointer;
+    background-color: rgb(193, 11, 11);
+}
