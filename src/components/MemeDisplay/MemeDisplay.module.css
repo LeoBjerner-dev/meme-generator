@@ -11,7 +11,7 @@
 }
 
 .ImageContainer img {
-    height: 350px;
+    height: 400px;
     min-width: 600px;
     border: 1px solid black;
 }
@@ -29,4 +29,18 @@
     scale: 1.05;
     cursor: pointer;
     background-color: rgb(193, 11, 11);
+}
+
+.textControls {
+    display: flex;
+    justify-content: space-evenly;
+}
+.textBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.textBox input {
+    scale: 1.5;
 }
