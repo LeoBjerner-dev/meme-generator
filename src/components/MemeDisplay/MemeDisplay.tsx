@@ -9,7 +9,6 @@ const MemeDisplay = (props: Imemes) => {
         <div className={styles.ImageContainer}>
             <img src={props.img} alt={props.alt} />
         </div>
-        <button>Välj bild</button>
     </div>
   )
 }

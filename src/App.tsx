@@ -5,17 +5,26 @@ import MemeDisplay from "./components/MemeDisplay/MemeDisplay";
 import ImgButtons from "./components/ImgButtons/ImgButtons";
 
 function App() {
+  const [chosenImage, setChosenImage] = useState<string | null>(null);
+  const [clickedStart, setClickedStart] = useState(false);
 
-  const [chosenImage, setChosenImage] = useState("")
-  
   const updateImg = (url: string) => {
-    setChosenImage(url)
-  }
-  
+    setChosenImage(url);
+    setClickedStart(false)
+  };
+
+  const showSuggestions = () => {
+    setClickedStart(true);
+  };
+
   return (
     <>
-      <MemeDisplay id={1} img={chosenImage} alt="" />
-      <ImgButtons updateImg={updateImg}/>
+      {chosenImage && <MemeDisplay id={1} img={chosenImage} alt="" />}
+      <ImgButtons
+        updateImg={updateImg}
+        showSuggestions={showSuggestions}
+        clickedStart={clickedStart}
+      />
     </>
   );
 }
