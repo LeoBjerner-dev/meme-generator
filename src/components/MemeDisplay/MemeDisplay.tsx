@@ -7,12 +7,28 @@ const MemeDisplay = (props: Imemes) => {
       <div className={styles.ImageContainer}>
         <div className={`${styles.meme} meme`}>
           <img src={props.img} alt={props.alt} />
-          <span className={styles.top}>{props.topText}</span>
-          <span className={styles.bottom}>{props.bottomText}</span>
+          <span
+            className={styles.top}
+            style={{ fontSize: `${props.topSize}px` }}
+          >
+            {props.topText}
+          </span>
+          <span
+            className={styles.bottom}
+            style={{ fontSize: `${props.bottomSize}px` }}
+          >
+            {props.bottomText}
+          </span>
         </div>
         <div className={styles.textControls}>
           <div className={styles.textBox}>
-            <input type="range" />
+            <input
+              type="range"
+              min={16}
+              max={80}
+              value={props.topSize}
+              onChange={(e) => props.onTopSizeChange(Number(e.target.value))}
+            />
             <input
               type="text"
               placeholder="Memetext 1"
@@ -21,7 +37,13 @@ const MemeDisplay = (props: Imemes) => {
             />
           </div>
           <div className={styles.textBox}>
-            <input type="range" />
+            <input
+              type="range"
+              min={16}
+              max={80}
+              value={props.bottomSize}
+              onChange={(e) => props.onBottomSizeChange(Number(e.target.value))}
+            />
             <input
               type="text"
               placeholder="Memetext 2"

@@ -19,12 +19,16 @@ function App() {
   const [clickedStart, setClickedStart] = useState(false);
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
+  const [topSize, setTopSize] = useState(32);
+  const [bottomSize, setBottomSize] = useState(32);
 
   const updateImg = (url: string) => {
     setChosenImage(url);
     setClickedStart(false);
     setTopText("");
     setBottomText("");
+    setTopSize(32);
+    setBottomSize(32);
   };
 
   const showSuggestions = () => {
@@ -41,6 +45,10 @@ function App() {
           bottomText={bottomText}
           onTopChange={setTopText}
           onBottomChange={setBottomText}
+          topSize={topSize}
+          bottomSize={bottomSize}
+          onTopSizeChange={setTopSize}
+          onBottomSizeChange={setBottomSize}
         />
       )}
       {chosenImage && (
