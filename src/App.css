@@ -9,3 +9,18 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+.downloadBtn {
+  display: block;
+  margin: 16px auto;
+  padding: 10px 24px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.downloadBtn:hover {
+  background-color: #45a049;
+}

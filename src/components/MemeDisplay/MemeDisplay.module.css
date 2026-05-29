@@ -2,7 +2,6 @@
   height: 500px;
   width: 800px;
 
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,36 +10,69 @@
 }
 
 .ImageContainer img {
-    height: 400px;
-    min-width: 600px;
-    border: 1px solid black;
+  height: 400px;
+  min-width: 600px;
+  border: 1px solid black;
 }
 
 .MemeContainer button {
-    padding: 20px;
-    width: 150px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 5px;
-    color: lightcyan;
-    background-color: red;
+  padding: 20px;
+  width: 150px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  color: lightcyan;
+  background-color: red;
 }
 .MemeContainer button:hover {
-    scale: 1.05;
-    cursor: pointer;
-    background-color: rgb(193, 11, 11);
+  scale: 1.05;
+  cursor: pointer;
+  background-color: rgb(193, 11, 11);
 }
 
 .textControls {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 .textBox {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .textBox input {
-    scale: 1.5;
+  scale: 1.5;
+}
+.meme {
+  position: relative;
+  display: inline-block;
+}
+
+.meme img {
+  display: block;
+  max-width: 100%;
+}
+
+.top,
+.bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Impact, sans-serif;
+  color: white;
+  font-size: 2rem;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  white-space: nowrap;
+}
+
+.top {
+  top: 10px;
+}
+
+.bottom {
+  bottom: 10px;
 }
